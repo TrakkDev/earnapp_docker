@@ -26,6 +26,7 @@ Choose the one you prefer
 
 > [!TIP]
 > Don't forget to link the node to your earnapp account
+
 > [!IMPORTANT]
 > Thanks me by using my referral link : https://earnapp.com/i/xgr824y
 
