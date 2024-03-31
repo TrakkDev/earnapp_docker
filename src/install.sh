@@ -1,10 +1,10 @@
 #!/bin/bash
 if [ -f "/usr/bin/earnapp" ]; then
     # run the app
-    bash earnapp start
+    bash earnapp start &
     echo "Application started because already installed"
 else
-    if [ -n "$EARNAPP_UUID" ]
+    if [ -n "$EARNAPP_UUID" ]; then
         echo "Custom UUID set"
         printf $EARNAPP_UUID > /etc/earnapp/uuid
     fi
