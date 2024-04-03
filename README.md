@@ -26,7 +26,6 @@ Choose the one you prefer
 
 > [!TIP]
 > Don't forget to link the node to your earnapp account
-
 > [!IMPORTANT]
 > Thanks me by using my referral link : https://earnapp.com/i/xgr824y
 
@@ -40,3 +39,4 @@ Choose the one you prefer
 ```docker buildx build . -t trakkdev/trakkdev-earnapp:v0.1 --progress plain --platform linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le --builder=container --push```
 ### Testing/Launching your container
 ```docker run -d --memory="256m" --cpus=1.5  --restart=always --name earnapp  trakkdev/trakkdev-earnapp:v0.1```
+-->
