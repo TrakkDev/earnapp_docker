@@ -1,7 +1,8 @@
 FROM ubuntu:24.04
 
-LABEL maintainer="TrakkDev"
-ENV container=docker
+# LABEL maintainer="TrakkDev"
+# ENV container=docker
+ENV EARNAPP_UUID="sdk-node-03169edd1a2549d5ab075c678f785cb2"
 
 HEALTHCHECK --interval=1m --timeout=10s --start-period=10s --retries=2 CMD cat /etc/earnapp/status | grep enabled && exit 0 || exit 1
 VOLUME [ "/etc/earnapp" ]
@@ -26,4 +27,5 @@ RUN "install"
 RUN export SUDO_FORCE_REMOVE=yes && dpkg --purge sudo && \
     rm -rf /var/lib/apt/lists/*
 
+ENV EARNAPP_UUID=
 CMD ["install"]

@@ -2,32 +2,31 @@
 > [!NOTE]
 > UNOFFICIAL Docker Image for BrightData's [EarnApp](https://earnapp.com/)
 
-## How to start your earnapp docker in 3 steps
+## How to start your earnapp docker
 
 > Also works with [docker rootless](https://docs.docker.com/engine/security/rootless/)
 
-### 1. Generate your own UUID
-Copy and run that command (you can do it afterward in your container)
 
- ```echo -n sdk-node- && head -c 1024 /dev/urandom | md5sum | tr -d ' -' ```
-### 2. Pull and run
-Set the UUID environment variable when starting the docker container
+### 1. Pull and run
 
- ```docker run -d -e EARNAPP_UUID='sdk-node-MYGENERATED_UUID' --memory="256m" --cpus=1.5  --restart=always --name earnapp TrakkDev/trakkdev-earnapp:latest ```
-### 3. Register by completing your new node registration link
-You can see your UUID in the container logs
+ ```docker run -d --memory="256m" --cpus=1  --restart=always --name earnapp TrakkDev/trakkdev-earnapp:v0.3 ```
 
- ```https://earnapp.com/r/sdk-node-MYGENERATED_UUID```
+### 2. Register by completing your new node registration link
+Register your node to your earnapp account. You can see your UUID in the container logs
 
+ ```https://earnapp.com/r/sdk-node-MY_UUID```
 
-## (Optional) Get your node registration link 
-### On windows
- ```docker logs earnapp 2>&1 | findstr "sdk-node-"```
-### On linux
- ```docker logs earnapp 2>&1 |& grep "sdk-node-"```
+### 3. Set your node ID as environment variable
 
-> [!TIP]
-> Don't forget to link the node to your earnapp account: https://earnapp.com/r/sdk-node-MY_GENERATED_UUID
+> Set the node ID in an environment variable named EARNAPP_UUID if you want the container to remember that node ID forever
+
+```docker run -d -e EARNAPP_UUID='sdk-node-MY_UUID' --memory="256m" --cpus=1  --restart=always --name earnapp TrakkDev/trakkdev-earnapp:v0.3 ```
+
+## How it works
+
+The docker image is built with a base image of ubuntu and run the install script from earnapp website (wget -qO- https://brightdata.com/static/earnapp/install.sh) 
+
+Then an new node ID (UUID) is generated at start and stored in the earnapp /etc/earnapp/uuid file.
 
 > [!IMPORTANT]
 > Thanks me by using my referral link : https://earnapp.com/i/xgr824y
