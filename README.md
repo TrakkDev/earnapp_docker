@@ -2,25 +2,29 @@
 > [!NOTE]
 > UNOFFICIAL Docker Image for BrightData's [EarnApp](https://earnapp.com/)
 
+[Dockerhub repository](https://hub.docker.com/repository/docker/trakkdev/earnapp/general)
+
+
 ## How to start your earnapp docker
 
 > Also works with [docker rootless](https://docs.docker.com/engine/security/rootless/)
 
-
 ### 1. Pull and run
 
- ```docker run -d --memory="256m" --cpus=1  --restart=always --name earnapp TrakkDev/trakkdev-earnapp:v0.3 ```
+ ```docker run -d --memory="256m" --cpus=1  --restart=always --name earnapp TrakkDev/earnapp:v0.4 ```
+
+And that's all folks
 
 ### 2. Register by completing your new node registration link
 Register your node to your earnapp account. You can see your UUID in the container logs
 
  ```https://earnapp.com/r/sdk-node-MY_UUID```
 
-### 3. Set your node ID as environment variable
+#### 3. (Optional) Set your node ID as environment variable
 
-> Set the node ID in an environment variable named EARNAPP_UUID if you want the container to remember that node ID forever
+> Set the node ID in an environment variable named EARNAPP_UUID if you want to reinstall the container with the same node ID
 
-```docker run -d -e EARNAPP_UUID='sdk-node-MY_UUID' --memory="256m" --cpus=1  --restart=always --name earnapp TrakkDev/trakkdev-earnapp:v0.3 ```
+```docker run -d -e EARNAPP_UUID='sdk-node-MY_UUID' --memory="256m" --cpus=1  --restart=always --name earnapp TrakkDev/earnapp:v0.4 ```
 
 ## How it works
 
@@ -37,9 +41,13 @@ Then an new node ID (UUID) is generated at start and stored in the earnapp /etc/
 [@madereddy](https://github.com/madereddy/EarnApp-Docker)
 
 
-### Creation TIPS: Enable docker-compose
+## Creation TIPS: Enable docker-compose
+
+Create the builder
 ```docker buildx create --name container --driver=docker-container```
 
-```docker buildx build . -t trakkdev/trakkdev-earnapp:v0.2 --progress plain --platform linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le --builder=container --push```
+Build for selected platforms
+```docker buildx build . -t trakkdev/earnapp:v0.4 --progress plain --platform linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le --builder=container --push```
 ### Testing/Launching your container
-```docker run -d -e EARNAPP_UUID='sdk-node-MYGENERATED_UUID' --memory="256m" --cpus=1.5 --restart=always --name earnapp  trakkdev/trakkdev-earnapp:v0.2```
+Test your newly built image
+```docker run -d -e EARNAPP_UUID='sdk-node-MY_UUID' --memory="256m" --cpus=0.8 --restart=always --name earnapp  trakkdev/earnapp:v0.4```
