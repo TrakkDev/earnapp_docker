@@ -11,7 +11,7 @@
 
 ### 1. Pull and run
 
- ```docker run -d --memory="256m" --cpus=1  --restart=always --name earnapp TrakkDev/earnapp:v0.4 ```
+ ```docker run -d --memory="256m" --cpus=1  --restart=always --name earnapp TrakkDev/earnapp:latest ```
 
 And that's all folks
 
@@ -24,7 +24,7 @@ Register your node to your earnapp account. You can see your UUID in the contain
 
 > Set the node ID in an environment variable named EARNAPP_UUID if you want to reinstall the container with the same node ID
 
-```docker run -d -e EARNAPP_UUID='sdk-node-MY_UUID' --memory="256m" --cpus=1  --restart=always --name earnapp TrakkDev/earnapp:v0.4 ```
+```docker run -d -e EARNAPP_UUID='sdk-node-MY_UUID' --memory="256m" --cpus=1  --restart=always --name earnapp TrakkDev/earnapp:latest ```
 
 ## How it works
 
@@ -50,4 +50,4 @@ Build for selected platforms
 ```docker buildx build . -t trakkdev/earnapp:v0.4 --progress plain --platform linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le --builder=container --push```
 ### Testing/Launching your container
 Test your newly built image
-```docker run -d -e EARNAPP_UUID='sdk-node-MY_UUID' --memory="256m" --cpus=0.8 --restart=always --name earnapp  trakkdev/earnapp:v0.4```
+```docker run -d -e EARNAPP_UUID='sdk-node-MY_UUID' --memory="256m" --cpus=0.8 --restart=always --name earnapp  trakkdev/earnapp:latest```
