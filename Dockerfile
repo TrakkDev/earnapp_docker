@@ -24,7 +24,7 @@ RUN cp /app/src/install.sh /usr/bin/install \
 RUN "install"
 
 # remove sudo from image
-RUN export SUDO_FORCE_REMOVE=yes && dpkg --purge sudo && \
+RUN export SUDO_FORCE_REMOVE=yes && dpkg --purge sudo-rs sudo && \
     rm -rf /var/lib/apt/lists/*
 
 ENV EARNAPP_UUID=
