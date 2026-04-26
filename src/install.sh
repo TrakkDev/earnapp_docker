@@ -4,7 +4,11 @@ if [ -f "/usr/bin/earnapp" ]; then
 	# show the UUID by default
 	# echo "default node ID of earnapp docker: $(cat /etc/earnapp/uuid)"
 	earnapp stop
-	UUID=$(cat "/etc/earnapp/uuid")
+	if [ -n "$EARNAPP_UUID" ]; then
+		UUID=$EARNAPP_UUID
+	else
+		UUID=$(cat "/etc/earnapp/uuid")
+	fi
 	# run the app is environement variable is set correctly, stop if not
 	if [ "$UUID" == "sdk-node-03169edd1a2549d5ab075c678f785cb2" ]; then
 		# Generate a new uuid and set it as env variable
