@@ -51,7 +51,7 @@ Create the builder
 
 > Build for selected platforms
 
-```docker buildx build . -t trakkdev/earnapp:v0.4 --progress plain --platform linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le --builder=container --push```
+```docker buildx build . -t trakkdev/earnapp:latest --progress plain --platform linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le --builder=container --push```
 
 ### Testing/Launching your container
 > Test your newly built image
