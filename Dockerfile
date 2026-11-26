@@ -1,4 +1,4 @@
-FROM ubuntu:26.04
+FROM ubuntu:26.10
 
 # LABEL maintainer="TrakkDev"
 # ENV container=docker
